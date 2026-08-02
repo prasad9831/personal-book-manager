@@ -50,7 +50,6 @@ const register = async (req, res) => {
   secure: true,
   sameSite: "none",
   maxAge: 7 * 24 * 60 * 60 * 1000,
-  path: "/",
 });
 
     res.status(201).json({
@@ -103,7 +102,6 @@ const login = async (req, res) => {
   secure: true,
   sameSite: "none",
   maxAge: 7 * 24 * 60 * 60 * 1000,
-  path: "/",
 });
 
     res.json({

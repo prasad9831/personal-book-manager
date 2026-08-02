@@ -16,7 +16,7 @@ const app = express();
 
 app.use(
     cors({
-        origin : "https://personal-book-manager-eosin.vercel.app/",
+        origin : "https://personal-book-manager-eosin.vercel.app",
         credentials : true,
     })
 );

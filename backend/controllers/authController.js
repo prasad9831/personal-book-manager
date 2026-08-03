@@ -18,7 +18,6 @@ const generateToken = (userId) => {
 
 const register = async (req, res) => {
   try {
-    console.log("REQ BODY:", req.body);
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
@@ -45,12 +44,12 @@ const register = async (req, res) => {
 
     const token = generateToken(user._id);
 
-   res.cookie("token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none",
-  maxAge: 7 * 24 * 60 * 60 * 1000,
-});
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
 
     res.status(201).json({
       message: "Registration Successful",
@@ -97,12 +96,12 @@ const login = async (req, res) => {
 
     const token = generateToken(user._id);
 
-   res.cookie("token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none",
-  maxAge: 7 * 24 * 60 * 60 * 1000,
-});
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
 
     res.json({
       message: "Login successful",

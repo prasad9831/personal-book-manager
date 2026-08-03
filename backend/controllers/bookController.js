@@ -6,8 +6,6 @@ const Book = require("../models/Book")
 const getBooks = async (req, res) => {
     try {
         const {status, tags} = req.query;
-        console.log("REQUEST BODY:", req.query);
-        console.log("Status:", status);
 
         const filter = {
             user : req.user.userId,
@@ -24,8 +22,6 @@ const getBooks = async (req, res) => {
         const books = await Book.find(filter).sort({
             createdAt : -1,
         });
-
-        console.log("books", books);
 
         res.json({
             books,
@@ -74,9 +70,6 @@ const createBook = async (req, res) => {
             status,
         } = req.body;
 
-        console.log("REQUEST BODY:", req.body);
-        console.log("TAGS:", tags);
-
         if(!title || !author) {
             return res.status(400).json({
                 message : "Title and author are required",
@@ -112,8 +105,6 @@ const updateBook = async (req, res) => {
             tags,
             status
         } = req.body
-
-        console.log("UpdateData:", req.body);
         
         const book = await Book.findOne({
             _id : req.params.id,
@@ -153,8 +144,6 @@ const deleteBook = async (req, res) => {
             user : req.user.userId
         });
 
-        console.log("Delect user_id:", req.params.id);
-        console.log("Delect userID:", req.user.userId);
         if(!book) {
             return res.status(404).json({
                 message : "Book not found",

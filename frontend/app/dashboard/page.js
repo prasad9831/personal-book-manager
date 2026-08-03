@@ -69,11 +69,7 @@ export default function DashboardPage() {
         endpoint += `?${params.toString()}`;
       }
 
-      console.log("Loading books from:", endpoint);
-
       const data = await apiRequest(endpoint);
-
-      console.log("BOOKS RESPONSE:", data);
 
       setBooks(data.books || []);
     } catch (error) {
@@ -86,7 +82,6 @@ export default function DashboardPage() {
       const data = await apiRequest("/books/stats");
 
       setStats(data);
-      console.log("All data", data);
     } catch (error) {
       console.error(error);
     }
@@ -188,7 +183,6 @@ export default function DashboardPage() {
 
   const handleSubmit = async (bookData) => {
     try {
-      console.log("DASHBOARD BOOK DATA:", bookData);
 
       if (editingBook) {
         await apiRequest(`/books/${editingBook._id}`, {
@@ -213,7 +207,7 @@ export default function DashboardPage() {
 
   const handleDelete = async (id) => {
     const confirmed = window.confirm(
-      `Are you sure you want to delete this book?${id}`,
+      "Are you sure you want to delete this book?",
     );
 
     if (!confirmed) return;

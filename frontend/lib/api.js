@@ -5,11 +5,6 @@ const API_URL =
 export const apiRequest = async (endpoint, options = {}) => {
   const url = `${API_URL}${endpoint}`;
 
-  console.log("=================================");
-  console.log("API REQUEST:", url);
-  console.log("OPTIONS:", options);
-  console.log("=================================");
-
   const response = await fetch(url, {
     ...options,
     credentials: "include",
@@ -19,16 +14,7 @@ export const apiRequest = async (endpoint, options = {}) => {
     },
   });
 
-  console.log("STATUS:", response.status);
-  console.log(
-    "CONTENT-TYPE:",
-    response.headers.get("content-type")
-  );
-
-  // Get response as text first
   const text = await response.text();
-
-  // console.log("SERVER RESPONSE:", text);
 
   let data;
 

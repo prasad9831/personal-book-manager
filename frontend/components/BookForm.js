@@ -64,8 +64,6 @@ try {
     status: form.status,
   };
 
-  console.log("BOOK DATA:", bookData);
-
   await onSubmit(bookData);
 
   if (!editingBook) {
